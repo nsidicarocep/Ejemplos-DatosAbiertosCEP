@@ -41,7 +41,7 @@ datos <- datos %>%
   filter(!is.na(letra))
 
 # Graficar scatterplot: salario promedio y share de mujeres 
-ggplot(datos,aes(share_mujer,w_mean_constante,color=letra_desc,size=puestos)) + 
+plot <- ggplot(datos,aes(share_mujer,w_mean_constante,color=letra_desc,size=puestos,label2=clae2_desc)) + 
   geom_point(alpha=0.5) + 
   scale_size(range = c(.1, 24), name="Empleados en el sector",guide = 'none') +
   ylab('Salario promedio') + 
@@ -49,10 +49,11 @@ ggplot(datos,aes(share_mujer,w_mean_constante,color=letra_desc,size=puestos)) +
   labs(title = 'Relación entre la proporción de mujeres y el salario promedio del sector. Oct 2022',
        caption = 'Fuente: elaboración propia en base a CEPXXI') +
   theme_bw() +
-  theme(legend.position = 'bottom',
+  theme(legend.position = 'none',
         plot.title = element_text(size=15,face='bold'),
         plot.caption = element_text(size=12),
         plot.subtitle = element_text(size=12,face='bold'),
         axis.text.x = element_text(angle=45,hjust=1))  + 
   guides(color=guide_legend(nrow=6,byrow=TRUE))
-  
+
+plotly::ggplotly(plot)
