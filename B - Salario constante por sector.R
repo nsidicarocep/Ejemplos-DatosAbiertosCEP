@@ -3,7 +3,7 @@ library(DatosAbiertosCEP)
 library(tidyverse)
 
 # Descargar base de percentiles salariales abierto por letra. Empresas privadas y sin apertura de genero
-datos <- descarga_DA(index_base = 16,tipo = "Percentil Salario",genero = 'NO',universo = 'Privado',jurisdiccion = 'NO',sector = 'Letra')
+datos <- descarga_DA(index_base = 16)
 # O bien: datos <- datos <- descarga_DA(tipo = "Percentil Salario",genero = 'NO',universo = 'Privado',jurisdiccion = 'NO',sector = 'Letra')
 
 # Llevar precios de todas las variables a precios constantes de diciembre 2022
