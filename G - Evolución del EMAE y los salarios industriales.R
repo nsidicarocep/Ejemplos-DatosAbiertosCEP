@@ -58,8 +58,7 @@ datos <- datos %>%
   filter(letra == 'C')
 
 # Ver evolución hasta 2021
-datos <- datos %>% 
-  filter(fecha < '2022-01-01')
+
 
 # Cambiar nombres de variables 
 datos <- datos %>% 
@@ -72,10 +71,10 @@ datos <- indexar_DA(datos,'2007-01-01',c('tendencia'),'letra')
 
 # Graficar scatterplot: salario promedio y share de mujeres 
 plot <- ggplot(datos,aes(fecha)) + 
-  geom_line(aes(y=tendencia_index,color='Tendencia'),size=1) + 
-  geom_line(aes(y=desestacionalizada_index,color='Desestacionalizados'),size=1) + 
-  geom_line(aes(y=emae_index,color='EMAE'),size=1) + 
-  scale_color_manual(name = "Series", values = c("Tendencia" = "#56B4E9", "Desestacionalizados" = "#009E73",'EMAE'='#0072B2')) +
+  geom_line(aes(y=tendencia_index,color='Tendencia del salario'),size=1) + 
+  geom_line(aes(y=desestacionalizada_index,color='Salarios desestacionalizados'),size=1) + 
+  geom_line(aes(y=emae_index,color='EMAE desestacionalizado'),size=1) + 
+  scale_color_manual(name = "Series", values = c("Tendencia del salario" = "#01548a", "Salarios desestacionalizados" = "#f7941e",'EMAE desestacionalizado'='#9283be')) +
   scale_x_date(date_breaks = "5 months") +
   ylab('Series indexadas') + 
   xlab('Fecha') + 
@@ -90,4 +89,3 @@ plot <- ggplot(datos,aes(fecha)) +
 
 
 plot
-plotly::ggplotly(plot)
