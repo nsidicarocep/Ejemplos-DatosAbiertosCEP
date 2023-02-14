@@ -58,7 +58,8 @@ datos <- datos %>%
   filter(letra == 'C')
 
 # Ver evolución hasta 2021
-
+datos <- datos %>% 
+  filter(fecha < '2022-01-01')
 
 # Cambiar nombres de variables 
 datos <- datos %>% 
